@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Caballero Barbershop Wien</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #0d0d0d;
+  color: white;
+}
+
+/* HERO */
+header {
+  background: url('https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 55px;
+}
+
+header p {
+  font-size: 20px;
+}
+
+.btn {
+  margin-top: 20px;
+  padding: 15px 35px;
+  background: gold;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* SECTION */
+section {
+  padding: 60px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* BOXEN */
+.box {
+  background: #1a1a1a;
+  padding: 25px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* PREISE */
+.prices {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* GALERIE */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 15px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* FOOTER */
+footer {
+  background: black;
+  text-align: center;
+  padding: 30px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Caballero Barbershop</h1>
+  <p>4,9 ★ (127 Bewertungen)</p>
+<a href="https://wa.me/4369010162222?text=Hallo%20ich%20möchte%20einen%20Termin%20buchen" target="_blank">
+  <button class="btn">Jetzt Termin auf WhatsApp</button>
+</a>
+</header>
+
+<section>
+  <h2>Unsere Leistungen</h2>
+
+  <div class="box">
+    ✂️ Herren, Damen, Kinder & Senioren  
+    💈 Bartpflege & Rasur  
+    🧴 Waschen & Styling  
+  </div>
+
+</section>
+
+<section>
+  <h2>Preise</h2>
+
+  <div class="prices">
+
+    <div class="box">
+      <h3>Herren Schnitt</h3>
+      <p>25€</p>
+    </div>
+
+    <div class="box">
+      <h3>Damen Schnitt</h3>
+      <p>35€</p>
+    </div>
+
+    <div class="box">
+      <h3>Kinder / Senioren</h3>
+      <p>18€</p>
+    </div>
+
+    <div class="box">
+      <h3>Bart Rasur</h3>
+      <p>15€</p>
+    </div>
+
+    <div class="box">
+      <h3>Komplett Paket</h3>
+      <p>40€</p>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2>Galerie</h2>
+
+  <div class="gallery">
+    <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=800&q=80">
+    <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=800&q=80">
+    <img src="https://images.unsplash.com/photo-1622287162716-1c3b8e3a3d6c?auto=format&fit=crop&w=800&q=80">
+  </div>
+
+</section>
+
+<section>
+  <h2>Öffnungszeiten</h2>
+
+  <div class="box">
+    Mo–Fr: 09:00 – 19:00 <br>
+    Sa: 09:00 – 18:00 <br>
+    So: Geschlossen
+  </div>
+
+</section>
+
+<section>
+  <h2>Kontakt</h2>
+
+  <div class="box">
+    📍 Hausfeldstraße 199/1D, 1220 Wien <br>
+    📞 0690 67676767
+  </div>
+
+</section>
+
+<footer>
+  © 2026 Caballero Barbershop Wien
+</footer>
+
+</body>
+</html>

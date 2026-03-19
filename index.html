@@ -152,6 +152,7 @@ fetch(sheetUrl)
       const title = row[1]?.trim();
       const content = row[2]?.trim();
 
+      // Leistungen
       if(section === 'Leistungen' && content) {
         const box = document.createElement('div');
         box.className = 'box';
@@ -159,6 +160,7 @@ fetch(sheetUrl)
         leistungenDiv.appendChild(box);
       }
 
+      // Preise
       if(section === 'Preise' && title && content) {
         const box = document.createElement('div');
         box.className = 'box';
@@ -166,18 +168,21 @@ fetch(sheetUrl)
         preiseDiv.appendChild(box);
       }
 
+      // Galerie
       if(section === 'Galerie' && content) {
         const img = document.createElement('img');
         img.src = content;
         galerieDiv.appendChild(img);
       }
 
+      // Öffnungszeiten
       if(section === 'Öffnungszeiten' && content) {
-        oeffDiv.textContent = content;
+        oeffDiv.innerHTML = content.replace(/\\n/g, '<br>');
       }
 
+      // Kontakt
       if(section === 'Kontakt' && content) {
-        kontaktDiv.textContent = content;
+        kontaktDiv.innerHTML = content.replace(/\\n/g, '<br>');
       }
     });
   })

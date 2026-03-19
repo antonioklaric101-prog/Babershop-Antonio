@@ -131,13 +131,16 @@ footer {
 </footer>
 
 <script>
+// Google Sheet CSV-URL
 const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS-1z1U6Y3YHAzl_aOtT3kmtT1JOqUhMhig7G5gtmkrhMiv48IgeMdZf-rDLD9kdi8m31CSMXPHHCuM/pub?output=csv';
 
 fetch(sheetUrl)
   .then(res => res.text())
   .then(csvText => {
-    const rows = csvText.split('\n').map(r => r.split(','));
-    
+    const rows = csvText.split('\n').map(r => {
+      return r.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g)?.map(cell => cell.replace(/"/g, '').trim()) || [];
+    });
+
     const leistungenDiv = document.getElementById('leistungen');
     const preiseDiv = document.getElementById('preise');
     const galerieDiv = document.getElementById('galerie');
@@ -149,31 +152,31 @@ fetch(sheetUrl)
       const title = row[1]?.trim();
       const content = row[2]?.trim();
 
-      if(section === 'Leistungen') {
+      if(section === 'Leistungen' && content) {
         const box = document.createElement('div');
         box.className = 'box';
         box.textContent = content;
         leistungenDiv.appendChild(box);
       }
 
-      if(section === 'Preise') {
+      if(section === 'Preise' && title && content) {
         const box = document.createElement('div');
         box.className = 'box';
         box.innerHTML = `<h3>${title}</h3><p>${content}</p>`;
         preiseDiv.appendChild(box);
       }
 
-      if(section === 'Galerie') {
+      if(section === 'Galerie' && content) {
         const img = document.createElement('img');
         img.src = content;
         galerieDiv.appendChild(img);
       }
 
-      if(section === 'Öffnungszeiten') {
+      if(section === 'Öffnungszeiten' && content) {
         oeffDiv.textContent = content;
       }
 
-      if(section === 'Kontakt') {
+      if(section === 'Kontakt' && content) {
         kontaktDiv.textContent = content;
       }
     });

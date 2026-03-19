@@ -103,83 +103,83 @@ footer {
 
 <section>
   <h2>Unsere Leistungen</h2>
-
-  <div class="box">
-    ✂️ Herren, Damen, Kinder & Senioren  
-    💈 Bartpflege & Rasur  
-    🧴 Waschen & Styling  
-  </div>
-
+  <div id="leistungen"></div>
 </section>
 
 <section>
   <h2>Preise</h2>
-
-  <div class="prices">
-
-    <div class="box">
-      <h3>Herren Schnitt</h3>
-      <p>25€</p>
-    </div>
-
-    <div class="box">
-      <h3>Damen Schnitt</h3>
-      <p>35€</p>
-    </div>
-
-    <div class="box">
-      <h3>Kinder / Senioren</h3>
-      <p>18€</p>
-    </div>
-
-    <div class="box">
-      <h3>Bart Rasur</h3>
-      <p>15€</p>
-    </div>
-
-    <div class="box">
-      <h3>Komplett Paket</h3>
-      <p>40€</p>
-    </div>
-
-  </div>
+  <div class="prices" id="preise"></div>
 </section>
 
 <section>
   <h2>Galerie</h2>
-
-  <div class="gallery">
-    <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=800&q=80">
-    <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=800&q=80">
-    <img src="https://images.unsplash.com/photo-1622287162716-1c3b8e3a3d6c?auto=format&fit=crop&w=800&q=80">
-  </div>
-
+  <div class="gallery" id="galerie"></div>
 </section>
 
 <section>
   <h2>Öffnungszeiten</h2>
-
-  <div class="box">
-    Mo–Fr: 09:00 – 19:00 <br>
-    Sa: 09:00 – 18:00 <br>
-    So: Geschlossen
-  </div>
-
+  <div class="box" id="oeffnungszeiten"></div>
 </section>
 
 <section>
   <h2>Kontakt</h2>
-
-  <div class="box">
-    📍 Hausfeldstraße 199/1D, 1220 Wien <br>
-    📞 0690 67676767
-  </div>
-
+  <div class="box" id="kontakt"></div>
 </section>
 
 <footer>
   © 2026 Caballero Barbershop Wien
 </footer>
+
+<script>
+const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS-1z1U6Y3YHAzl_aOtT3kmtT1JOqUhMhig7G5gtmkrhMiv48IgeMdZf-rDLD9kdi8m31CSMXPHHCuM/pub?output=csv';
+
+fetch(sheetUrl)
+  .then(res => res.text())
+  .then(csvText => {
+    const rows = csvText.split('\n').map(r => r.split(','));
+    
+    const leistungenDiv = document.getElementById('leistungen');
+    const preiseDiv = document.getElementById('preise');
+    const galerieDiv = document.getElementById('galerie');
+    const oeffDiv = document.getElementById('oeffnungszeiten');
+    const kontaktDiv = document.getElementById('kontakt');
+
+    rows.forEach(row => {
+      const section = row[0]?.trim();
+      const title = row[1]?.trim();
+      const content = row[2]?.trim();
+
+      if(section === 'Leistungen') {
+        const box = document.createElement('div');
+        box.className = 'box';
+        box.textContent = content;
+        leistungenDiv.appendChild(box);
+      }
+
+      if(section === 'Preise') {
+        const box = document.createElement('div');
+        box.className = 'box';
+        box.innerHTML = `<h3>${title}</h3><p>${content}</p>`;
+        preiseDiv.appendChild(box);
+      }
+
+      if(section === 'Galerie') {
+        const img = document.createElement('img');
+        img.src = content;
+        galerieDiv.appendChild(img);
+      }
+
+      if(section === 'Öffnungszeiten') {
+        oeffDiv.textContent = content;
+      }
+
+      if(section === 'Kontakt') {
+        kontaktDiv.textContent = content;
+      }
+    });
+  })
+  .catch(err => console.error('Fehler beim Laden des Sheets:', err));
+</script>
 
 </body>
 </html>

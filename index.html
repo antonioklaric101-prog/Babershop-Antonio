@@ -42,6 +42,35 @@ Komm vorbei und erlebe Qualität, die man sieht.
 <section><h2>Öffnungszeiten</h2><div class="box" id="oeffnungszeiten"></div></section>
 <section><h2>Kontakt</h2><div class="box" id="kontakt"></div></section>
 
+<section style="background:#111; border-top:1px solid #333; margin-top:40px;">
+  <div style="max-width:1000px;margin:auto;padding:30px 20px;color:#aaa;font-size:14px;line-height:1.6;">
+    
+    <h3 style="color:white;">Impressum</h3>
+    
+    <p>
+    Klaric´s Barbershop<br>
+    Inhaber: Antonio Klaric<br>
+    Podhagskygasse 8<br>
+    1220 Wien<br>
+    Österreich
+    </p>
+
+    <p>
+    Telefon: +43 690 10162222<br>
+    E-Mail: info@caballero-barbershop.at
+    </p>
+
+    <p>
+    Unternehmensgegenstand: Friseurdienstleistungen<br>
+    Aufsichtsbehörde: Magistrat Wien<br>
+    </p>
+
+    <p style="margin-top:20px;">
+    © 2026 Caballero Barbershop Wien
+    </p>
+
+  </div>
+</section>
 <footer>© 2026 Klaric´s Barbershop Wien</footer>
 
 <script>
@@ -82,11 +111,11 @@ galerieDiv.appendChild(img);
 }
 
 if(section === 'Öffnungszeiten' && content){
-oeffDiv.innerHTML = content.replace(/\n/g,'<br>');
+oeffDiv.innerHTML += "<p style='margin:5px 0;'>" + content.replace(/\n/g,'<br>');
 }
 
 if(section === 'Kontakt' && content){
-kontaktDiv.innerHTML = content.replace(/\n/g,'<br>');
+kontaktDiv.innerHTML += "<p style='margin:5px 0;'>" + content.replace(/\n/g, "<br>") + "</p>";
 }
 
 });
